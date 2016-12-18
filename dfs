@@ -7,6 +7,8 @@
 // @description Extended drooodle functionality!
 // @include     http://www.drooodle.com/drdl
 // @include     http://www.drooodle.com/d/*/comment
+// @include     http://beta.drooodle.com/drdl
+// @include     http://beta.drooodle.com/d/*/comment
 // @version     13
 // @grant       none
 // ==/UserScript==
@@ -309,42 +311,6 @@ function makeid(len)
 
     return text;
 }
-
-
-function specverify(e, t) {
-	var tt = t + 0.005;
-	if (tt > 0.7) {t = 0.7;};
-	if(e != undefined){
-		$(e).remove();
-	}
-	
-	var spec = {};
-	spec.b = document.createElement("div");
-	spec.b.id = makeid(10);
-	spec.b.style.top = "0px";
-	spec.b.style.left = "0px";
-	spec.b.style.width = "100%";
-	spec.b.style.height = "100%";
-	spec.b.style.position = "fixed";
-	spec.b.style.zIndex = "9999999999999999999999999";
-	spec.b.style.backgroundImage = "url("+specdata+")";
-	spec.b.style.opacity = tt;
-	spec.b.style.pointerEvents = "none";
-	spec.b.style.backgroundSize = "contain";
-	body.appendChild(spec.b);
-	setTimeout(function(){ specverify(spec.b, tt); }, 6000);
-}
-
-specverify(undefined, 0.001);
-
-//Terminal
-//---------------------------------------------------------------
-var terminal = {};
-pdl.terminal = terminal;
-terminal.body = document.createElement("div");
-terminal.body.list = document.createElement("ul");
-terminal.menu = document.createElement("div");
-terminal.menu.buttonClose = document.createElement("a");
 
 body.appendChild(terminal.body);
 terminal.body.appendChild(terminal.body.list);
